@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <base target="_blank" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <base target="_blank"/>
   <title>I'm songxingguo - 爱技术，也爱生活</title>
-  <link rel="shortcut icon" href="https://blog.songxingguo.com/images/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="https://blog.songxingguo.com/images/favicon.ico" type="image/x-icon"/>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: calc(10px + 0.33vw);
       -webkit-font-smoothing: antialiased;
-      padding: 5vh 10vw;
-      color: #33334f;
+      color: #fff;
       background-color: #eaf5ff;
+    }
+    .bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: transparent;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-image: url("https://graphbed.qiniu.songxingguo.com/hi/bg.jpeg");
+      padding: 5vh 10vw;
     }
     h1 {
       font-size: 4.5em;
@@ -31,14 +43,14 @@
     }
     a {
       text-decoration: none;
-      color: #121314;
+      color: #fff;
       position: relative;
     }
     a:after {
       content: "";
       position: absolute;
       z-index: -1;
-      top: 80%;
+      top: 95%;
       left: -0.1em;
       right: -0.1em;
       bottom: 0;
@@ -48,6 +60,9 @@
     a:hover:after {
       top: 0%;
     }
+    a:hover {
+      color: #121314;
+    }
     li {
       margin-top: 0.3em;
       font-size: 1.6em;
@@ -56,30 +71,39 @@
     }
   </style>
 </head>
-
 <body data-gr-c-s-loaded="true">
-<h1 style="font-weight:600">Hi, I'm  <ruby>宋兴国<rt>sònɡ xīnɡ ɡuó</rt></ruby>.</h1>
-<p style="font-weight:500; font-size:2.4em">
+<div class="bg">
+  <h1 style="font-weight:600">Hi, I'm
+    <ruby>宋兴国
+      <rt>sònɡ xīnɡ ɡuó</rt>
+    </ruby>
+  </h1>
+  <p style="font-weight:500; font-size:2.4em">
     爱技术，也爱生活。
-</p>
-<p>
-  我一名前端开发工程师，现工作于<a href="#">大约科技</a>，
-  生活在<a href="https://baike.baidu.com/item/上海/114606?fr=aladdin"><ruby>上海<rt>shànɡ hǎi</rt></ruby></a>。
-</p>
-<hr />
-<h2>你可以在下面的地方找到我:</h2>
-<ul>
-  <li>
-    <a href="http://blog.songxingguo.com">博客</a>
-  </li>
-  <li>
-    <a href="https://github.com/songxingguo">Github</a>
-  </li>
-  <li>
-    <a href="http://www.mafengwo.cn/path/74150999.html">马蜂窝</a>
-  </li>
-</ul>
-<hr />
-<p><span style="font-weight:400;">爱好️：</span>读书<sup>📖</sup>、电影<sup>🎬</sup>、厨艺、乐器<sup>🎸</sup>、语言、旅行<sup>✈️</sup></p>
+  </p>
+  <p>
+    我一名前端开发工程师，现工作于<a href="#">大约科技</a>，
+    生活在<a href="https://baike.baidu.com/item/上海/114606?fr=aladdin">
+    <ruby>上海
+      <rt>shànɡ hǎi</rt>
+    </ruby>
+  </a>。
+  </p>
+  <hr/>
+  <h2>你可以在下面的地方找到我:</h2>
+  <ul>
+    <li>
+      <a href="http://blog.songxingguo.com">博客</a>
+    </li>
+    <li>
+      <a href="https://github.com/songxingguo">Github</a>
+    </li>
+    <li>
+      <a href="http://www.mafengwo.cn/path/74150999.html">马蜂窝</a>
+    </li>
+  </ul>
+  <hr/>
+  <p><span style="font-weight:400;">爱好️：</span>读书<sup>📖</sup>、电影<sup>🎬</sup>、厨艺、乐器<sup>🎸</sup>、语言、旅行<sup>✈️</sup></p>
+</div>
 </body>
 </html>
