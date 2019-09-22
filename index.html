@@ -13,26 +13,40 @@
       font-size: calc(10px + 0.33vw);
       -webkit-font-smoothing: antialiased;
       color: #fff;
+      margin: 0;
+      padding: 0;
+      /*background-color: #eaf5ff;*/
+      background-color: black;
+    }
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .comments {
+      background-color: #fff;
+      margin: 5vh 3vw;
+      border-radius: 30px;
+    }
+    .v {
+      padding: 2vh 3vw;
+    }
+    .v .vwrap {
+      border: none !important;
     }
     .bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
+      position: absolute;
       background-color: transparent;
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
-      /*background-image: url("https://graphbed.qiniu.songxingguo.com/hi/bg.jpeg");*/
-      background-image: url('https://images.unsplash.com/photo-1507431489734-ef0dbfbf88e1?ixlib=rb-0.3.5&q=99&fm=jpg&crop=entropy&cs=tinysrgb&w=2048&fit=max&s=3eb13a093159d39986599db595081b8e');
+      background-image: url("https://graphbed.qiniu.songxingguo.com/hi/bg.jpeg");
+      /*background-image: url('https://images.unsplash.com/photo-1507431489734-ef0dbfbf88e1?ixlib=rb-0.3.5&q=99&fm=jpg&crop=entropy&cs=tinysrgb&w=2048&fit=max&s=3eb13a093159d39986599db595081b8e');*/
     }
     .content {
       position: absolute;
-      padding: 5vh 10vw;
-      /*background-color: #eaf5ff;*/
+      padding: 1vh 10vw;
     }
     h1 {
       font-size: 4.5em;
@@ -75,51 +89,91 @@
       font-weight: 300;
       line-height: 1.4;
     }
+    .visitors {
+      position: absolute;
+      top: 4vh;
+      right: 3vw;
+    }
+    .number {
+      font-size: 35px;
+      font-weight: 600;
+      color: #ff5627;
+      /*background-color: #ffeee9;*/
+      padding: 5px 35px;
+      border-radius: 20px;
+      font-feature-settings: "tnum";
+    }
   </style>
 </head>
 <body data-gr-c-s-loaded="true">
-<div class="bg">
-  <video src="https://static.zcool.cn/v45.08.17.12-v18-07-24-14/special-resource/aerial-photograph//video/video2.mp4"
-         muted="" loop="" autoplay=""></video>
+<div class="container ">
+  <div class="bg">
+    <video src="https://static.zcool.cn/v45.08.17.12-v18-07-24-14/special-resource/aerial-photograph//video/video2.mp4"
+           muted="" loop="" autoplay=""></video>
+  </div>
+  <div class="content">
+    <h1 style="font-weight:600">Hi, I'm
+      <ruby>宋兴国
+        <rt>sònɡ xīnɡ ɡuó</rt>
+      </ruby>
+    </h1>
+    <p style="font-weight:500; font-size:2.4em">
+      爱技术，也爱生活。
+    </p>
+    <p>
+      我一名前端开发工程师，现工作于<a href="#">大约科技</a>，
+      生活在<a href="https://baike.baidu.com/item/上海/114606?fr=aladdin">
+      <ruby>上海
+        <rt>shànɡ hǎi</rt>
+      </ruby>
+    </a>。
+    </p>
+    <hr/>
+    <h2>你可以在下面的地方找到我:</h2>
+    <ul>
+      <li>
+        <a href="http://blog.songxingguo.com">博客</a>
+      </li>
+      <li>
+        <a href="https://github.com/songxingguo">Github</a>
+      </li>
+      <li>
+        <a href="http://www.mafengwo.cn/path/74150999.html">马蜂窝</a>
+      </li>
+      <li>
+        <a href="https://unsplash.com/@songxingguo/collections">Unsplash</a>
+      </li>
+      <li>
+        <a href="http://www.xiachufang.com/cook/129864781/">下厨房</a>
+      </li>
+    </ul>
+    <hr/>
+    <p><span style="font-weight:400;">爱好️：</span>读书<sup>📖</sup>、电影<sup>🎬</sup>、厨艺、乐器<sup>🎸</sup>、语言、旅行<sup>✈️</sup>
+    </p>
+  </div>
+  <div class="visitors">
+    <span id="/" class="leancloud_visitors" data-flag-title="关于我">
+        <i class="leancloud-visitors-count number">0</i>
+    </span>
+  </div>
 </div>
-<div class="content">
-  <h1 style="font-weight:600">Hi, I'm
-    <ruby>宋兴国
-      <rt>sònɡ xīnɡ ɡuó</rt>
-    </ruby>
-  </h1>
-  <p style="font-weight:500; font-size:2.4em">
-    爱技术，也爱生活。
-  </p>
-  <p>
-    我一名前端开发工程师，现工作于<a href="#">大约科技</a>，
-    生活在<a href="https://baike.baidu.com/item/上海/114606?fr=aladdin">
-    <ruby>上海
-      <rt>shànɡ hǎi</rt>
-    </ruby>
-  </a>。
-  </p>
-  <hr/>
-  <h2>你可以在下面的地方找到我:</h2>
-  <ul>
-    <li>
-      <a href="http://blog.songxingguo.com">博客</a>
-    </li>
-    <li>
-      <a href="https://github.com/songxingguo">Github</a>
-    </li>
-    <li>
-      <a href="http://www.mafengwo.cn/path/74150999.html">马蜂窝</a>
-    </li>
-    <li>
-      <a href="https://unsplash.com/@songxingguo/collections">Unsplash</a>
-    </li>
-    <li>
-      <a href="http://www.xiachufang.com/cook/129864781/">下厨房</a>
-    </li>
-  </ul>
-  <hr/>
-  <p><span style="font-weight:400;">爱好️：</span>读书<sup>📖</sup>、电影<sup>🎬</sup>、厨艺、乐器<sup>🎸</sup>、语言、旅行<sup>✈️</sup></p>
+<div class="comments">
+  <div id="vcomments">
+  </div>
 </div>
+<!-- 引入 Js -->
+<script src='https://cdn.jsdelivr.net/npm/valine'></script>
+<script>
+  new Valine({
+    el: '#vcomments',
+    appId: '5KNE77KGRoBwz0eTtPxWksTj-gzGzoHsz',
+    appKey: '2oU4tvtGWAXp5i6kWAnhd2rm',
+    notify: true, // 邮件提醒!!!
+    verify: true, // 验证码
+    placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+    avatar: 'wavatar',
+    visitor: true // 阅读量统计
+  });
+</script>
 </body>
 </html>
