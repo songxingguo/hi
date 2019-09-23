@@ -114,7 +114,7 @@
 </head>
 <body data-gr-c-s-loaded="true">
 <div class="container ">
-  <div class="bg">
+  <div class="bg" id="bg">
     <!--    <video src="https://static.zcool.cn/v45.08.17.12-v18-07-24-14/special-resource/aerial-photograph//video/video2.mp4"-->
     <!--           muted="" loop="" autoplay=""></video>-->
   </div>
@@ -287,6 +287,38 @@
     $this.countTo(options);
   }
 
+</script>
+<script>
+  class BgManager {
+    constructor (id, dayImg, nightImg, from = 7, to = 19) {
+      this.hours = new Date().getHours()
+      this.bg = document.getElementById(id)
+      this.dayImg = dayImg
+      this.nightImg = nightImg
+      this.from = from
+      this.to = to
+    }
+
+    changeBg () {
+      if (this.isDayTime()) {
+        this.setBgImage(this.dayImg)
+      } else {
+        this.setBgImage(this.nightImg)
+      }
+    }
+
+    setBgImage (image) {
+      this.bg.style.backgroundImage = `url(${image})`
+    }
+
+    isDayTime () {
+      return this.hours > this.from && this.hours < this.to
+    }
+  }
+
+  const dayImg = 'https://graphbed.qiniu.songxingguo.com/hi/tree.jpeg'
+  const nightImg = 'https://graphbed.qiniu.songxingguo.com/hi/LiJiang.jpg'
+  new BgManager('bg', dayImg, nightImg).changeBg()
 </script>
 </body>
 </html>
