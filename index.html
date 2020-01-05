@@ -174,16 +174,16 @@
         <a href="https://www.yuque.com/songxingguo">语雀</a>
       </li>
       <li>
-        <a href="https://weibo.com/songxingguo1014 ">微博</a>
+        <a href="http://album.songxingguo.com/">相册</a>
       </li>
       <li>
         <a href="http://blog.songxingguo.com">博客</a>
       </li>
       <li>
-        <a href="http://www.xiachufang.com/cook/129864781/">下厨房</a>
+        <a href="https://weibo.com/songxingguo1014 ">微博</a>
       </li>
       <li>
-        <a href="http://www.mafengwo.cn/path/74150999.html">马蜂窝</a>
+        <a href="http://www.xiachufang.com/cook/129864781/">下厨房</a>
       </li>
     </ul>
     <hr/>
@@ -415,6 +415,29 @@
 
     isMorning (from = 6, to = 10) {
       return this.hours >= from && this.hours < to
+    }
+
+    getUrl () {
+      // TODO 图片存在:随机数、后缀
+      const prefixUrl = 'https://graphbed.qiniu.songxingguo.com/hi/'
+      let imgUrl = ''
+      let randomNum = 0
+      do {
+        randomNum = getRandomNum(0, 10)
+        imgUrl = `${prefixUrl}${randomNum}`
+      } while (isExist(imgUrl))
+      return imgUrl
+    }
+
+    getRandomNum (min, max) {
+      return Math.floor(Math.random() * (max - min)) + min
+    }
+
+    isExist (imgUrl) {
+      const http = new XMLHttpRequest()
+      http.open('HEAD', imgUrl, false)
+      http.send()
+      return http.status !== 404
     }
   }
 
