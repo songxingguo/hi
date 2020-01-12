@@ -195,7 +195,7 @@
     <span id="/" class="leancloud_visitors number" data-flag-title="关于我">
         <i class="leancloud-visitors-count orange timer count-number">0</i>
     </span>
-    <span class="valine-comment-count number count-number green timer" data-xid="/hi/">0</span>
+    <span class="valine-comment-count number count-number green timer" data-xid="/">0</span>
   </div>
   <div id="node-scroll-button">
     <svg t="1570421660472" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -380,7 +380,7 @@
     $('.valine-comment-count').data('to', $('.valine-comment-count').text())
     // start all the timers
     $('.timer').each(count);
-  }, 200)
+  }, 500)
 
   function count (options) {
     var $this = $(this);
