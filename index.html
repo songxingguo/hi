@@ -42,12 +42,10 @@
       position: absolute;
       height: 100%;
       width: 100%;
-      background-color: transparent;
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
-      /*background-image: url("https://graphbed.qiniu.songxingguo.com/hi/LiJiang.jpg");*/
-      background-image: url("https://graphbed.qiniu.songxingguo.com/hi/tree.jpeg");
+      background-image: linear-gradient(135deg, #81FBB8 10%, #28C76F 100%);
     }
     .content {
       position: absolute;
@@ -390,61 +388,25 @@
 
 </script>
 <script>
-  class BgManager {
-    constructor (id, morningImg, dayImg, nightImg) {
-      this.hours = new Date().getHours()
-      this.bg = document.getElementById(id)
-      this.morningImg = morningImg
-      this.dayImg = dayImg
-      this.nightImg = nightImg
-    }
-
-    changeBg () {
-      if (this.isMorning()) return this.setBgImage(this.morningImg) // 早晨
-      if (this.isDayTime()) return this.setBgImage(this.dayImg) // 白天
-      return this.setBgImage(this.nightImg) //傍晚
-    }
-
-    setBgImage (image) {
-      this.bg.style.backgroundImage = `url(${image})`
-    }
-
-    isDayTime (from = 10, to = 19) {
-      return this.hours >= from && this.hours < to
-    }
-
-    isMorning (from = 6, to = 10) {
-      return this.hours >= from && this.hours < to
-    }
-
-    getUrl () {
-      // TODO 图片存在:随机数、后缀
-      const prefixUrl = 'https://graphbed.qiniu.songxingguo.com/hi/'
-      let imgUrl = ''
-      let randomNum = 0
-      do {
-        randomNum = getRandomNum(0, 10)
-        imgUrl = `${prefixUrl}${randomNum}`
-      } while (isExist(imgUrl))
-      return imgUrl
-    }
-
-    getRandomNum (min, max) {
-      return Math.floor(Math.random() * (max - min)) + min
-    }
-
-    isExist (imgUrl) {
-      const http = new XMLHttpRequest()
-      http.open('HEAD', imgUrl, false)
-      http.send()
-      return http.status !== 404
-    }
+  const loadImg = async () => {
+    const ramUrl = `https://net.songxingguo.workers.dev/index/ram`
+    const {url} = await new Promise((resolve) => {
+      $.ajax(ramUrl, {
+        type: 'get',
+        success: (data) => {
+          resolve(data)
+        }
+      })
+    })
+    const imgUrl = `${url}/watermark`
+    document.getElementById('bg').style.backgroundImage = `url(${imgUrl})`
   }
-
-  const morningImg = 'https://graphbed.qiniu.songxingguo.com/hi/city.jpg'
-  const dayImg = 'https://graphbed.qiniu.songxingguo.com/hi/tree.jpeg'
-  const nightImg = 'https://graphbed.qiniu.songxingguo.com/hi/LiJiang.jpg'
-  new BgManager('bg', morningImg, dayImg, nightImg).changeBg()
+  (() => {
+    loadImg()
+    setInterval(async () => {
+      loadImg()
+    }, 600000)
+  })()
 </script>
 </body>
 </html>
