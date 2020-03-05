@@ -92,6 +92,7 @@
       font-weight: 300;
       line-height: 1.4;
     }
+    /* 数字 */
     .visitors {
       position: absolute;
       top: 4vh;
@@ -110,6 +111,22 @@
     }
     .green {
       color: #49C628;
+    }
+    /* 文字 */
+    .word {
+      position: absolute;
+      top: 15vh;
+      right: 5vw;
+      color: #fff143;
+      font-size: 3.2rem;
+      letter-spacing: 0.3rem;
+      -webkit-writing-mode: vertical-lr;
+      writing-mode: vertical-lr;
+      text-align-last: justify;
+      text-align: justify;
+      text-justify: distribute-all-lines;
+    / / 这行必加，兼容ie浏览器 font-family: TChinese, SimSun, FangSong, STSong, STZhongsong, LiSu, KaiTi, "Microsoft YaHei";
+      transition: transform 0.4s ease-in 0s;
     }
     /*箭头*/
     #node-scroll-button {
@@ -189,6 +206,8 @@
             style="font-weight:400;">爱好️：</span>读书<sup>📖</sup>、电影<sup>🎬</sup>、骑行<sup>🚴‍</sup>、跑步<sup>🏃</sup>、摄影<sup>📷</sup>、植物<sup>🌳</sup>、厨艺<sup>🥬</sup>、书法<sup>✒️</sup>、乐器<sup>🎸</sup>、语言、旅行<sup>✈️</sup>
     </p>
   </div>
+  <!-- 文字 -->
+  <div id='word' class="word" style="display: none;"></div>
   <div class="visitors">
     <span id="/" class="leancloud_visitors number" data-flag-title="关于我">
         <i class="leancloud-visitors-count orange timer count-number">0</i>
@@ -207,6 +226,7 @@
   <div id="vcomments">
   </div>
 </div>
+<!-- 回到顶部 -->
 <div id="goTop">
   <svg t="1570424363532" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
        p-id="14051" width="20" height="20">
@@ -390,7 +410,7 @@
 <script>
   const loadImg = async () => {
     const ramUrl = `https://net.songxingguo.workers.dev/index/ram`
-    const {url} = await new Promise((resolve) => {
+    const {url, word} = await new Promise((resolve) => {
       $.ajax(ramUrl, {
         type: 'get',
         success: (data) => {
@@ -400,6 +420,7 @@
     })
     const imgUrl = `${url}/watermark`
     document.getElementById('bg').style.backgroundImage = `url(${imgUrl})`
+    $('#word').text(word)
   }
   (() => {
     loadImg()
@@ -407,6 +428,10 @@
       loadImg()
     }, 600000)
   })()
+</script>
+<!-- 文字淡入效果 -->
+<script>
+  $('#word').fadeIn(3000)
 </script>
 </body>
 </html>
