@@ -19,5 +19,8 @@
   "homepage": "https://github.com/songxingguo/hi#readme",
   "devDependencies": {
     "parcel": "^2.8.2"
+  },
+  "dependencies": {
+    "valine": "^1.5.1"
   }
 }
