@@ -21,6 +21,7 @@
     "parcel": "^2.8.2"
   },
   "dependencies": {
+    "three": "^0.148.0",
     "valine": "^1.5.1"
   }
 }
