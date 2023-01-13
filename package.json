@@ -1,0 +1,23 @@
+{
+  "name": "hi",
+  "version": "1.0.0",
+  "description": "关于我",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "repositorunry": {
+    "type": "git",
+    "url": "git+https://github.com/songxingguo/hi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/songxingguo/hi/issues"
+  },
+  "homepage": "https://github.com/songxingguo/hi#readme",
+  "devDependencies": {
+    "parcel": "^2.8.2"
+  }
+}
