@@ -39,12 +39,14 @@ export default class ThreeFactory {
     // this.renderer.setClearColor(0xe7f2fa, 1); // 设置背景颜色
     const container = document.getElementById("three-container");
     container.appendChild(this.renderer.domElement);
-    // this.createControls();
+    this.createControls();
   }
 
   // 创造轨道控制器;
   createControls() {
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    const controls = new OrbitControls(this.camera, this.renderer.domElement);
+    controls.enableZoom = false;
+    this.controls = controls;
   }
 
   // 纹理贴图网格模型
