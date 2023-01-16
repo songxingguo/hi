@@ -171,4 +171,5 @@ li {
   position: absolute;
   top: 12vh;
   left: 68vw;
+  visibility: hidden;
 }

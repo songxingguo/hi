@@ -53,7 +53,13 @@ export default class ThreeFactory {
   createTextureBox() {
     const geometry = new THREE.BoxGeometry(15, 15, 15);
     const loader = new THREE.TextureLoader();
-    const texture = loader.load(require("./../assets/www.songxingguo.com.png"));
+    const texture = loader.load(
+      require("./../assets/www.songxingguo.com.png"),
+      () => {
+        const container = document.getElementById("three-container");
+        container.style.visibility = "visible";
+      }
+    );
     const material = new THREE.MeshBasicMaterial({
       map: texture,
     });
