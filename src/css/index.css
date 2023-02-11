@@ -38,12 +38,12 @@ body {
       0 0,
     radial-gradient(circle closest-side, #ffffff 50%, rgba(255, 255, 255, 0) 0)
       55px 0 #48b;
-  background-size: 110px 148px;
+  background-size: 110px 130px;
   background-repeat: repeat-x;
 }
 .content {
   position: absolute;
-  padding: 12vh 10vw;
+  padding: 10vh 10vw;
 }
 h1 {
   font-size: 4.5em;
