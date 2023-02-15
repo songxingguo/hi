@@ -22,12 +22,7 @@ export default class ThreeFactory {
 
   // 创建相机
   createCamera() {
-    const camera = new THREE.PerspectiveCamera(
-      40,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      500
-    );
+    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 500);
     camera.position.set(0, 0, 40);
     this.camera = camera;
   }
