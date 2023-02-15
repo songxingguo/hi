@@ -10,7 +10,6 @@ container.addEventListener("mousemove", moveMouseToCanvas, false);
 container.addEventListener("mouseleave", leaveToCanvas, false);
 let voluntarily = true; // 开启动画
 function moveMouseToCanvas() {
-  console.log("moveMouseToCanvas", moveMouseToCanvas);
   voluntarily = false;
 }
 function leaveToCanvas() {
@@ -22,7 +21,7 @@ const { scene, camera, renderer } = threeFactory.init();
 function render() {
   renderer.render(scene, camera);
   const mesh = scene.children[0];
-  if (voluntarily) {
+  if (mesh && voluntarily) {
     mesh.rotation.x += 0.0005;
     mesh.rotation.y += 0.001;
   }

@@ -49,74 +49,37 @@ export default class ThreeFactory {
   }
 
   // 纹理贴图网格模型
-  createTextureBox() {
+  async createTextureBox() {
     const geometry = new THREE.BoxGeometry(15, 15, 15);
-    const loader = new THREE.TextureLoader();
-    const texture = loader.load(require("./../assets/logo.png"), () => {
-      const container = document.getElementById("three-container");
-      container.style.visibility = "visible";
-    });
-    const material = new THREE.MeshBasicMaterial({
-      map: texture,
-    });
-    const resumeTexture = loader.load(
-      require("./../assets/resume.songxingguo.com.png"),
-      () => {
-        const container = document.getElementById("three-container");
-        container.style.visibility = "visible";
-      }
-    );
-    const resumeMaterial = new THREE.MeshBasicMaterial({
-      map: resumeTexture,
-    });
-    const githubTexture = loader.load(
-      require("./../assets/github.com.songxingguo.png"),
-      () => {
-        const container = document.getElementById("three-container");
-        container.style.visibility = "visible";
-      }
-    );
-    const githubMaterial = new THREE.MeshBasicMaterial({
-      map: githubTexture,
-    });
-    const yuqueTexture = loader.load(
-      require("./../assets/www.yuque.com.songxingguo.png"),
-      () => {
-        const container = document.getElementById("three-container");
-        container.style.visibility = "visible";
-      }
-    );
-    const yuqueMaterial = new THREE.MeshBasicMaterial({
-      map: yuqueTexture,
-    });
-    const homeTexture = loader.load(
-      require("./../assets/www.songxingguo.com.png"),
-      () => {
-        const container = document.getElementById("three-container");
-        container.style.visibility = "visible";
-      }
-    );
-    const homeMaterial = new THREE.MeshBasicMaterial({
-      map: homeTexture,
-    });
-    const blogTexture = loader.load(
-      require("./../assets/blog.songxingguo.com.png"),
-      () => {
-        const container = document.getElementById("three-container");
-        container.style.visibility = "visible";
-      }
-    );
-    const blogMaterial = new THREE.MeshBasicMaterial({
-      map: blogTexture,
-    });
-    const mesh = new THREE.Mesh(geometry, [
-      blogMaterial,
-      resumeMaterial,
-      githubMaterial,
-      yuqueMaterial,
-      material,
-      homeMaterial,
-    ]); //纹理贴图网格模型对象
+    const materials = await this.loadMaterials();
+    const container = document.getElementById("three-container");
+    container.style.visibility = "visible";
+    const mesh = new THREE.Mesh(geometry, materials); //纹理贴图网格模型对象
     this.scene.add(mesh); //网格模型添加到场景中
+  }
+  loadMaterial(url) {
+    const loader = new THREE.TextureLoader();
+    return new Promise((resolve) => {
+      let material = null;
+      const texture = loader.load(url, () => {
+        resolve(material);
+      });
+      material = new THREE.MeshBasicMaterial({
+        map: texture,
+      });
+    });
+  }
+  loadMaterials() {
+    const url = require("./../assets/logo.png");
+    const resumeUrl = require("./../assets/resume.songxingguo.com.png");
+    const githubUrl = require("./../assets/github.com.songxingguo.png");
+    const yuqueUrl = require("./../assets/www.yuque.com.songxingguo.png");
+    const homeUrl = require("./../assets/www.songxingguo.com.png");
+    const blogUrl = require("./../assets/blog.songxingguo.com.png");
+    const textures = [blogUrl, resumeUrl, githubUrl, yuqueUrl, url, homeUrl];
+    const texturePromise = textures.map((url) => {
+      return this.loadMaterial(url);
+    });
+    return Promise.all(texturePromise);
   }
 }
