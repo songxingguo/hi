@@ -31,6 +31,10 @@ export default class ThreeFactory {
   createRender() {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     this.renderer.setSize(300, 300);
+    //设置设备像素比, 避免绘图模糊
+    this.renderer.setPixelRatio(
+      window.devicePixelRatio < 2 ? 2 : window.devicePixelRatio
+    );
     // this.renderer.setClearColor(0xe7f2fa, 1); // 设置背景颜色
     const container = document.getElementById("three-container");
     container.appendChild(this.renderer.domElement);
