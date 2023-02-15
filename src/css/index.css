@@ -172,4 +172,5 @@ li {
   top: 12vh;
   left: 68vw;
   visibility: hidden;
+  cursor: pointer;
 }
