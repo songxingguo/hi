@@ -70,7 +70,7 @@ export default class ThreeFactory {
       map: resumeTexture,
     });
     const githubTexture = loader.load(
-      require("./../assets/github.com:songxingguo.png"),
+      require("./../assets/github.com.songxingguo.png"),
       () => {
         const container = document.getElementById("three-container");
         container.style.visibility = "visible";
@@ -80,7 +80,7 @@ export default class ThreeFactory {
       map: githubTexture,
     });
     const yuqueTexture = loader.load(
-      require("./../assets/www.yuque.com:songxingguo.png"),
+      require("./../assets/www.yuque.com.songxingguo.png"),
       () => {
         const container = document.getElementById("three-container");
         container.style.visibility = "visible";
@@ -110,12 +110,12 @@ export default class ThreeFactory {
       map: blogTexture,
     });
     const mesh = new THREE.Mesh(geometry, [
-      material,
-      yuqueMaterial,
-      githubMaterial,
-      resumeMaterial,
-      homeMaterial,
       blogMaterial,
+      resumeMaterial,
+      githubMaterial,
+      yuqueMaterial,
+      material,
+      homeMaterial,
     ]); //纹理贴图网格模型对象
     this.scene.add(mesh); //网格模型添加到场景中
   }
