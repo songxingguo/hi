@@ -1,4 +1,4 @@
-name: GitHub Actions Build and Deploy
+name: 静态博客构建
 on:
   push:
     branches:
@@ -16,14 +16,7 @@ jobs:
         run: |
           npm i
           npm run build
-      # - name: Deploy 🚀
-      #   uses: JamesIves/github-pages-deploy-action@v4
-      #   with:
-      #     ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      #     BRANCH: gh-pages
-      #     FOLDER: dist
-      #     CLEAN: true
-      - name: 发布到Coding
+      - name: 推送到代码仓库
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GH_REF: 'github.com/songxingguo/hi.git'
@@ -38,5 +31,7 @@ jobs:
           git commit -m "Update Blog By GithubAction With Build $TRAVIS_BUILD_NUMBER"
           # Github Pages
           git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages
+          # Coding Pages
+          git push --force --quiet "https://zrUWsPQJyF:${CO_TOKEN}@${CO_REF}" master:master
           # Coding Pages
           git push --force --quiet "https://zrUWsPQJyF:${CO_TOKEN}@${CO_REF}" master:master
