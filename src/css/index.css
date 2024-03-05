@@ -178,6 +178,6 @@ li {
 .love {
   text-emphasis-color: pink;
   -webkit-text-emphasis-color: pink;
-  -webkit-text-emphasis-style: "♡";
-  text-emphasis-style: "♡";
+  -webkit-text-emphasis-style: "❤";
+  text-emphasis-style: "❤";
 }
