@@ -174,3 +174,10 @@ li {
   visibility: hidden;
   cursor: pointer;
 }
+
+.love {
+  text-emphasis-color: pink;
+  -webkit-text-emphasis-color: pink;
+  -webkit-text-emphasis-style: "♡";
+  text-emphasis-style: "♡";
+}
