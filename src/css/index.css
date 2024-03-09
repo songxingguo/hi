@@ -169,9 +169,9 @@ li {
 /* three.js */
 .three-container {
   position: absolute;
-  top: 12vh;
-  left: 68vw;
-  visibility: hidden;
+  top: 10vh;
+  right: 10vw;
+  /* visibility: hidden; */
   cursor: pointer;
 }
 

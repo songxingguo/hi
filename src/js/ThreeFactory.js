@@ -1,17 +1,20 @@
 import * as THREE from "three";
 // 导入轨道控制器
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import SplineLoader from "@splinetool/loader";
 
 export default class ThreeFactory {
   constructor({ url = "" } = {}) {
     this.url = url;
+    this.init();
   }
 
   init() {
     this.createSence();
     this.createCamera();
-    this.createRender();
-    this.createTextureBox();
+    this.createSpline();
+    this.addEventListener();
+    // this.createTextureBox();
     return { scene: this.scene, camera: this.camera, renderer: this.renderer };
   }
 
@@ -22,8 +25,16 @@ export default class ThreeFactory {
 
   // 创建相机
   createCamera() {
-    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 500);
-    camera.position.set(0, 0, 40);
+    const camera = new THREE.OrthographicCamera(
+      window.innerWidth / -2,
+      window.innerWidth / 2,
+      window.innerHeight / 2,
+      window.innerHeight / -2,
+      -50000,
+      10000
+    );
+    camera.position.set(0, 0, 0);
+    camera.quaternion.setFromEuler(new THREE.Euler(0, 0, 0));
     this.camera = camera;
   }
 
@@ -35,17 +46,34 @@ export default class ThreeFactory {
     this.renderer.setPixelRatio(
       window.devicePixelRatio < 2 ? 2 : window.devicePixelRatio
     );
+    if (this.renderer)
+      this.renderer.setAnimationLoop(() => {
+        this.animate();
+      });
     // this.renderer.setClearColor(0xe7f2fa, 1); // 设置背景颜色
     const container = document.getElementById("three-container");
     container.appendChild(this.renderer.domElement);
-    this.createControls();
+    return this.renderer;
   }
 
   // 创造轨道控制器;
-  createControls() {
-    const controls = new OrbitControls(this.camera, this.renderer.domElement);
+  createControls(domElement) {
+    const controls = new OrbitControls(this.camera, domElement);
     controls.enableZoom = false;
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.125;
     this.controls = controls;
+  }
+
+  createSpline() {
+    // spline scene
+    const loader = new SplineLoader();
+    loader.load(
+      "https://prod.spline.design/hbpS6tw0ixcQ4Dja/scene.splinecode",
+      (splineScene) => {
+        this.scene.add(splineScene);
+      }
+    );
   }
 
   // 纹理贴图网格模型
@@ -69,6 +97,7 @@ export default class ThreeFactory {
       });
     });
   }
+
   loadMaterials() {
     const url = require("./../assets/logo.png");
     const resumeUrl = require("./../assets/resume.songxingguo.com.png");
@@ -81,5 +110,33 @@ export default class ThreeFactory {
       return this.loadMaterial(url);
     });
     return Promise.all(texturePromise);
+  }
+
+  animate() {
+    const mesh = this.scene.children[0];
+    if (mesh && this.voluntarily) {
+      // mesh.rotation.x += 0.0005;
+      mesh.rotation.y += 0.004;
+    }
+    this.renderer.render(this.scene, this.camera);
+  }
+
+  addEventListener() {
+    const container = document.getElementById("three-container");
+    container.addEventListener(
+      "mousemove",
+      () => {
+        this.voluntarily = false;
+      },
+      false
+    );
+    container.addEventListener(
+      "mouseleave",
+      () => {
+        this.voluntarily = true;
+      },
+      false
+    );
+    this.voluntarily = true; // 开启动画
   }
 }

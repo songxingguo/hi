@@ -18,10 +18,13 @@
   },
   "homepage": "https://github.com/songxingguo/hi#readme",
   "devDependencies": {
-    "parcel": "^2.8.2"
+    "buffer": "^5.7.1",
+    "parcel": "^2.8.2",
+    "process": "^0.11.10"
   },
   "dependencies": {
-    "three": "^0.148.0",
+    "@splinetool/loader": "^1.0.61",
+    "three": "^0.162.0",
     "valine": "^1.5.1"
   }
 }
