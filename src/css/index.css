@@ -43,7 +43,7 @@ body {
 }
 .content {
   position: absolute;
-  padding: 8vh 10vw;
+  padding: 7vh 10vw 6vh;
 }
 h1 {
   font-size: 4.5em;
@@ -55,8 +55,8 @@ p {
   font-weight: 300;
   line-height: 1.4;
   max-width: 45em;
-  margin-bottom: 0.75em;
-  margin-top: 0.75em;
+  margin-bottom: 0.6em;
+  margin-top: 0.6em;
 }
 a {
   text-decoration: none;
@@ -180,4 +180,11 @@ li {
   -webkit-text-emphasis-color: pink;
   -webkit-text-emphasis-style: "♥";
   text-emphasis-style: "♥";
+}
+
+.brain {
+  text-emphasis-color: pink;
+  -webkit-text-emphasis-color: pink;
+  -webkit-text-emphasis-style: "🧠";
+  text-emphasis-style: "🧠";
 }
