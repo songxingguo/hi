@@ -5,7 +5,9 @@
   "source": "src/index.html",
   "scripts": {
     "start": "parcel",
-    "build": "parcel build src/index.html --public-url ./"
+    "build": "parcel build src/index.html --public-url ./",
+    "prepare": "husky",
+    "commitlint": "commitlint --edit"
   },
   "repositorunry": {
     "type": "git",
@@ -18,6 +20,9 @@
   },
   "homepage": "https://github.com/songxingguo/hi#readme",
   "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "husky": "^9.0.11",
     "parcel": "^2.8.2"
   },
   "dependencies": {
